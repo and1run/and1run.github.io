@@ -9,7 +9,9 @@ A single-page static site (HTML and CSS, one small script). No build step and no
 | `index.html` | The website |
 | `404.html` | Shown for pages that don't exist |
 | `favicon.svg`, `apple-touch-icon.png` | Browser tab and phone home-screen icons |
-| `robots.txt` | Lets search engines index the site |
+| `robots.txt`, `sitemap.xml` | Let search engines find and index the site |
+| `social-preview.png` | Image shown when the link is shared in chats and on social media |
+| `CNAME` | Tells GitHub Pages your custom domain, `andreirepida.com` |
 | `.nojekyll` | Tells GitHub Pages to publish the files as they are |
 | `.gitignore` | Keeps junk files out of the repository |
 
