@@ -2,6 +2,8 @@
 
 A single-page static site (HTML and CSS, one small script). No build step and no dependencies.
 
+Live at https://andreirepida.com
+
 ## Files
 
 | File | Purpose |
@@ -11,28 +13,29 @@ A single-page static site (HTML and CSS, one small script). No build step and no
 | `favicon.svg`, `apple-touch-icon.png` | Browser tab and phone home-screen icons |
 | `robots.txt`, `sitemap.xml` | Let search engines find and index the site |
 | `social-preview.png` | Image shown when the link is shared in chats and on social media |
-| `CNAME` | Tells GitHub Pages your custom domain, `andreirepida.com` |
+| `CNAME` | Tells GitHub Pages the custom domain, `andreirepida.com` |
 | `.nojekyll` | Tells GitHub Pages to publish the files as they are |
 | `.gitignore` | Keeps junk files out of the repository |
 
-## Publish on GitHub Pages
+## Update the site on GitHub
 
-1. On GitHub, create a new **public** repository. For the address `https://and1run.github.io`, name it exactly `and1run.github.io`. Any other name works too, and the site will then live at `https://and1run.github.io/<repo-name>/`.
-2. Upload all files from this folder to the repository root (drag and drop in the browser works). Make sure the hidden files `.nojekyll` and `.gitignore` are included.
-3. Open **Settings, Pages**. Under "Build and deployment" choose **Deploy from a branch**, branch `main`, folder `/ (root)`, and save.
-4. Wait a minute or two, then open the address shown on that page.
+1. Open the repository `and1run/and1run.github.io` on GitHub.
+2. Click **Add file, Upload files** and drag in the files from this folder, including the hidden ones (`.nojekyll`, `.gitignore`). Replace the existing files when asked.
+3. Write a short message such as "Update site" and click **Commit changes**.
+4. Wait one or two minutes, then reload https://andreirepida.com (use a private window or a hard refresh if you still see the old version).
 
-## Use your own domain
+## First-time setup (already done)
 
-1. In **Settings, Pages, Custom domain**, enter your domain and save. GitHub creates a `CNAME` file in the repository for you.
-2. At your domain registrar, add the DNS records GitHub lists in its documentation for custom domains.
-3. Back in Settings, Pages, tick **Enforce HTTPS** once it becomes available.
+1. Create a public repository named `and1run.github.io` and upload these files.
+2. In **Settings, Pages**, choose **Deploy from a branch**, branch `main`, folder `/ (root)`.
+3. In **Settings, Pages, Custom domain**, enter `andreirepida.com`, add the DNS records GitHub lists at your registrar, and tick **Enforce HTTPS** once it becomes available.
 
 ## Edit the content
 
-Everything is in `index.html`: the text, the projects, the email and the links. If you change the inline `<style>` or `<script>` block, the security hash in the `Content-Security-Policy` meta tag at the top must be updated too, otherwise browsers will block that block. Ask Claude to do it, or remove the tag if you prefer.
+Everything is in `index.html`: the text, the projects, the links and the email address (inside the script at the bottom). If you change the inline `<style>` or `<script>` block, the security hash in the `Content-Security-Policy` meta tag at the top must be updated too, otherwise browsers will block that block. Ask Claude to do it, or remove the tag if you prefer.
 
 ## Notes
 
-- The contact form opens the visitor's email app. It does not send anything by itself, so nothing is stored.
-- Fonts (Caveat and Nunito) are loaded from Google Fonts.
+- The "Copy email" button copies the address to the clipboard. The address is not written in the page text, so spam programs that scan pages don't see it.
+- The light and dark theme follows the visitor's device setting, and the toggle in the top bar overrides it. The choice is saved in the browser.
+- Fonts (Caveat and Nunito) are loaded from Google Fonts. The chart in the intro and the spreadsheet figure in About me use sample data, as their captions say.

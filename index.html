@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-wk/O6dnNxxhH3iAW9fM9UiqZPBAzN2Z1FhS88rE3HFw=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'sha256-w6VoVJr5CBOXNav5JP3fReBcqzpoOx5Bs0FQmLf1gHE='; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-tCAGZhpxZxZBtiIoo3VRxVwRs/1E7b+hdI+GbpC8m8M=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'sha256-Y7rOdI43AZDqhCe6IKOQhWKSzEJQ7p8pS65HlNAheDA='; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Andrei Repida | Web development, data analytics, automation</title>
 <meta name="description" content="Personal website of Andrei Repida: web development, data analytics and workflow automation.">
@@ -28,20 +28,20 @@
 <style>
 :root{
   --u:32px;
-  --paper:#f7f5ef; --line:#c6dbec; --ink:#1f2937; --muted:#5b6678; --blue:#1c2bb8; --margin:#e9a9a9;
-  --green:#2f8a70; --hl:#cdebd9; --note-b:#dcebf7; --note-g:#dbf0e4; --note-s:#e8eaee; --tape:rgba(150,170,190,.45); --on:#fff;
+  --paper:#f7f5ef; --line:#c6dbec; --ink:#1f2937; --muted:#5b6678; --blue:#1c2bb8; --margin:#b8474d;
+  --green:#226f5a; --hl:#cdebd9; --note-b:#dcebf7; --note-g:#dbf0e4; --note-s:#e8eaee; --tape:rgba(150,170,190,.45); --on:#fff;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#161f31; --line:#2a3957; --ink:#e6ebf7; --muted:#a3afcb; --blue:#93a8ff; --margin:#b0697a;
+    --paper:#161f31; --line:#2a3957; --ink:#e6ebf7; --muted:#a3afcb; --blue:#93a8ff; --margin:#d98a9a;
     --green:#82d3a8; --hl:#24473a; --note-b:#22324d; --note-g:#1f3a33; --note-s:#2a3144; --tape:rgba(160,180,210,.25); --on:#0f1626;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#161f31; --line:#2a3957; --ink:#e6ebf7; --muted:#a3afcb; --blue:#93a8ff; --margin:#b0697a;
+  --paper:#161f31; --line:#2a3957; --ink:#e6ebf7; --muted:#a3afcb; --blue:#93a8ff; --margin:#d98a9a;
   --green:#82d3a8; --hl:#24473a; --note-b:#22324d; --note-g:#1f3a33; --note-s:#2a3144; --tape:rgba(160,180,210,.25); --on:#0f1626;
 }
 *,*::before,*::after{box-sizing:inherit}
@@ -49,7 +49,7 @@ html{scroll-behavior:smooth; scroll-padding-top:calc(var(--u)*3 + env(safe-area-
 body{
   margin:0; color:var(--ink); background-color:var(--paper);
   font:400 1.05rem/var(--u) "Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
-  position:relative; min-height:100vh;
+  position:relative; min-height:100vh; display:flex; flex-direction:column;
 }
 .holes{position:absolute; top:0; bottom:0; left:0; width:clamp(1.6rem,4.5vw,3rem); pointer-events:none; display:none}
 @media (min-width:700px){.holes{display:block}}
@@ -59,12 +59,10 @@ body{
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .holes i{--bg-hole:#0d1422}}
 a{color:var(--blue)}
 :focus-visible{outline:3px solid var(--green); outline-offset:3px; border-radius:6px}
-.page{max-width:60rem; margin:0 auto; padding:0 1.25rem 0 calc(clamp(2.2rem,7vw,5.5rem) + 1.5rem)}
-@media (min-width:700px){.page{padding-right:2rem}}
+.page{width:100%; max-width:60rem; margin:0 auto; padding:0 2rem; flex:1 0 auto}
 
 header{position:sticky; top:env(safe-area-inset-top,0px); z-index:5; height:calc(var(--u)*2); background-color:var(--paper); border-bottom:2px solid var(--blue)}
-header .bar{max-width:60rem; margin:0 auto; height:100%; display:flex; align-items:center; gap:1rem; padding:0 1.25rem 0 calc(clamp(2.2rem,7vw,5.5rem) + 1.5rem)}
-@media (min-width:700px){header .bar{padding-right:2rem}}
+header .bar{max-width:60rem; margin:0 auto; height:100%; display:flex; align-items:center; gap:1rem; padding:0 2rem}
 .brand{display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--blue); margin-right:auto; font-family:"Caveat",cursive; font-weight:700; font-size:1.6rem; line-height:1; white-space:nowrap}
 .mono-sm{height:2.4rem; width:auto; color:var(--blue)}
 .menu{display:flex; align-items:center; gap:1.25rem}
@@ -78,22 +76,11 @@ header .bar{max-width:60rem; margin:0 auto; height:100%; display:flex; align-ite
 .switch[aria-checked="true"] .knob{transform:translateX(1.6rem)}
 .switch[aria-checked="true"] .sun{color:var(--blue)}
 .switch[aria-checked="true"] .moon{color:var(--on)}
-.burger{display:none; flex:none; position:relative; width:2.5rem; height:2.5rem; padding:0; background:transparent; border:2px solid var(--blue); border-radius:10px; cursor:pointer}
-.burger span{position:absolute; left:.55rem; right:.55rem; height:2px; border-radius:2px; background:var(--blue); transition:transform .2s,opacity .2s}
-.burger span:nth-child(1){top:.65rem} .burger span:nth-child(2){top:50%; margin-top:-1px} .burger span:nth-child(3){bottom:.65rem}
-.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
-.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-@media (max-width:760px){
-  .burger{display:block}
-  .menu{display:none; position:absolute; top:100%; left:0; right:0; padding:.6rem 1.25rem .75rem calc(clamp(2.2rem,7vw,5.5rem) + 1.5rem); background:var(--paper); border-bottom:2px solid var(--blue); box-shadow:0 12px 20px rgba(30,40,70,.15)}
-  .menu.open{display:flex; flex-direction:column; align-items:flex-end; gap:.1rem; animation:unfold .22s ease-out}
-  .menu .link{text-align:right; padding:.15rem 0; font-size:1.05rem; line-height:1.6rem}
-  .menu .switch{margin-top:.2rem}
-}
-@keyframes unfold{from{opacity:0; transform:translateY(-10px)} to{opacity:1; transform:none}}
 @media (max-width:380px){.pill{padding:0 .9rem 0 .7rem; gap:.5rem}}
-@media (max-width:420px){.brand{font-size:1.35rem; gap:.45rem} .mono-sm{height:2rem} header .bar{gap:.6rem}}
+@media (max-width:699px){header .bar,.page{padding-left:1.25rem; padding-right:1.25rem}}
+@media (max-width:420px){.brand{font-size:1.35rem; gap:.45rem} .mono-sm{height:2rem} header .bar{gap:.6rem} .menu{gap:.8rem}}
+@media (max-width:380px){.brand{font-size:1.15rem} .mono-sm{height:1.8rem}}
+@media (max-width:340px){.brand span{display:none}}
 
 .sprite{position:absolute; width:0; height:0; overflow:hidden}
 
@@ -104,16 +91,13 @@ section{padding:var(--u) 0}
 p{margin:0 0 var(--u); max-width:36rem}
 .hl{background:linear-gradient(transparent 55%,var(--hl) 55%,var(--hl) 92%,transparent 92%); padding:0 .15em}
 
-.hero{display:grid; grid-template-columns:1.3fr 1fr; gap:2rem; align-items:start; padding-top:calc(var(--u)*2)}
+.hero{display:grid; grid-template-columns:1.2fr 1fr; gap:2rem; align-items:start; padding-top:calc(var(--u)*2)}
 .hero .lead{font-size:1.2rem; margin-top:var(--u)}
-.mono-big{display:block; width:100%; height:auto; color:var(--blue); max-width:26rem; justify-self:center; align-self:center}
+.hero-chart{display:block; width:100%; height:auto; max-width:36rem; justify-self:center; align-self:center; order:-1}
 
-.about{display:grid; grid-template-columns:1.2fr 1fr; gap:2.5rem}
-.todo{list-style:none; margin:0; padding:0}
-.todo li{display:flex; gap:.7rem}
-.todo li::before{content:"\2713"; font-family:"Caveat",cursive; font-weight:700; color:var(--green); font-size:1.7rem; line-height:var(--u)}
-.todo b{color:var(--ink)}
-.todo span{color:var(--muted)}
+.about{display:grid; grid-template-columns:1fr 1.25fr; gap:2.5rem; align-items:center}
+.about > *{min-width:0}
+.about-sheet{display:block; width:100%; height:auto}
 
 .notes{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr)); gap:2rem 1.75rem; padding-top:var(--u)}
 .note{position:relative; padding:calc(var(--u)*.9) 1.3rem calc(var(--u)*.7); box-shadow:0 2px 0 rgba(0,0,0,.06),0 8px 18px rgba(30,40,70,.14); transition:transform .25s}
@@ -129,10 +113,10 @@ p{margin:0 0 var(--u); max-width:36rem}
 .tags li{font-size:.8rem; line-height:1.5rem; padding:0 .6rem; border:1.5px solid var(--blue); border-radius:999px; color:var(--blue); font-weight:600}
 .result{font-family:"Caveat",cursive; font-size:1.35rem; line-height:1.2; color:var(--green); font-weight:700; margin-bottom:.8rem; display:block}
 
-footer{padding:var(--u) 1.25rem calc(var(--u)*2); text-align:center; color:var(--muted); font-size:.9rem}
+footer{margin-top:auto; padding:1.25rem 1.25rem 1.5rem; text-align:center; color:var(--muted); font-size:.78rem}
 
 
-.actions{display:flex; align-items:center; gap:.9rem; height:calc(var(--u)*2)}
+.actions{display:flex; flex-wrap:wrap; align-items:center; gap:.9rem; min-height:calc(var(--u)*2); padding:.4rem 0}
 .pill{display:inline-flex; align-items:center; gap:.65rem; height:2.75rem; padding:0 1.2rem 0 .85rem; border:2px solid var(--blue); border-radius:999px; background:transparent; color:var(--blue); font:inherit; font-weight:700; line-height:1; text-decoration:none; white-space:nowrap; cursor:pointer; transition:background .2s}
 .pill:hover{background:var(--hl)}
 .pill.solid{background:var(--blue); color:var(--on)}
@@ -147,11 +131,11 @@ footer{padding:var(--u) 1.25rem calc(var(--u)*2); text-align:center; color:var(-
 .intro{margin-bottom:0}
 @media (max-width:760px){
   .hero,.about{grid-template-columns:1fr}
-  .hero,.about{row-gap:var(--u)}
-  .mono-big{order:-1; width:auto; height:calc(var(--u)*5); max-width:none; justify-self:start; align-self:start}
+  .hero{row-gap:var(--u)}
+  .hero-chart{max-width:100%; order:0}
   h2{font-size:2.4rem}
 }
-@media (prefers-reduced-motion:reduce){.note,.pill,.switch .knob,.burger span{transition:none} .menu.open{animation:none}}
+@media (prefers-reduced-motion:reduce){.note,.pill,.switch .knob{transition:none}}
 </style>
 </head>
 <body>
@@ -161,13 +145,10 @@ footer{padding:var(--u) 1.25rem calc(var(--u)*2); text-align:center; color:var(-
 <header>
   <div class="bar">
     <a class="brand" href="#top" aria-label="Andrei Repida, home"><svg class="mono-sm" viewBox="0 4 196 128" aria-hidden="true"><use href="#mono-art"/></svg><span>Andrei Repida</span></a>
-    <nav class="menu" id="menu" aria-label="Main">
-      <a class="link" href="#about">About</a>
-      <a class="link" href="#projects">Projects</a>
+    <nav class="menu" aria-label="Main">
       <a class="link" href="#contact">Contact</a>
       <button class="switch" id="theme" type="button" role="switch" aria-checked="false" aria-label="Dark mode"><span class="knob"></span><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
     </nav>
-    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -177,24 +158,227 @@ footer{padding:var(--u) 1.25rem calc(var(--u)*2); text-align:center; color:var(-
       <h1>Hi, I'm Andrei.</h1>
       <p class="lead">I'm interested in <span class="hl">web development</span>, <span class="hl">data analytics</span> and <span class="hl">workflow automation</span>. I like turning repetitive tasks into small tools that run on their own.</p>
     </div>
-    <svg class="mono-big" viewBox="0 4 196 128" role="img" aria-label="AR monogram"><use href="#mono-art"/></svg>
+    <svg class="hero-chart" viewBox="0 0 560 410" role="img" aria-labelledby="sk-t sk-d" xmlns="http://www.w3.org/2000/svg">
+    <title id="sk-t">Manual hours vs. automation, days 1 to 10</title>
+    <desc id="sk-d">Bars show hours per day spent on a manual task: about 8 hours on days 1 to 4, falling to about 30 minutes by days 7 to 10 after automation starts on day 5. A line shows the share of steps automated rising from 0 to 96 percent. Daily time drops 94 percent.</desc>
+    <defs>
+      <filter id="ink" x="-2%" y="-2%" width="104%" height="104%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="3" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+      </filter>
+      <pattern id="hatch-m" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="6" height="6" fill="none"/>
+        <line x1="0" y1="0" x2="0" y2="6" stroke="var(--margin)" stroke-width="1.3" opacity=".75"/>
+      </pattern>
+      <pattern id="hatch-b" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="6" height="6" fill="none"/>
+        <line x1="0" y1="0" x2="0" y2="6" stroke="var(--blue)" stroke-width="1.3" opacity=".55"/>
+      </pattern>
+    </defs>
+
+    <g filter="url(#ink)" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+      <path d="M70 252.0 H500 M70 204.0 H500 M70 156.0 H500 M70 108.0 H500 M70 60.0 H500 M113.0 300 V60 M156.0 300 V60 M199.0 300 V60 M242.0 300 V60 M285.0 300 V60 M328.0 300 V60 M371.0 300 V60 M414.0 300 V60 M457.0 300 V60" stroke="var(--line)" stroke-width="1"/>
+      <path d="M78.5 300 V100.8 H104.5 V300" fill="url(#hatch-m)" stroke="var(--margin)" stroke-width="1.8"/>
+      <path d="M121.5 300 V112.8 H147.5 V300" fill="url(#hatch-m)" stroke="var(--margin)" stroke-width="1.8"/>
+      <path d="M164.5 300 V105.6 H190.5 V300" fill="url(#hatch-m)" stroke="var(--margin)" stroke-width="1.8"/>
+      <path d="M207.5 300 V112.8 H233.5 V300" fill="url(#hatch-m)" stroke="var(--margin)" stroke-width="1.8"/>
+      <path d="M250.5 300 V189.6 H276.5 V300" fill="url(#hatch-b)" stroke="var(--blue)" stroke-width="1.8"/>
+      <path d="M293.5 300 V254.4 H319.5 V300" fill="url(#hatch-b)" stroke="var(--blue)" stroke-width="1.8"/>
+      <path d="M336.5 300 V285.6 H362.5 V300" fill="url(#hatch-b)" stroke="var(--blue)" stroke-width="1.8"/>
+      <path d="M379.5 300 V288.0 H405.5 V300" fill="url(#hatch-b)" stroke="var(--blue)" stroke-width="1.8"/>
+      <path d="M422.5 300 V289.2 H448.5 V300" fill="url(#hatch-b)" stroke="var(--blue)" stroke-width="1.8"/>
+      <path d="M465.5 300 V289.2 H491.5 V300" fill="url(#hatch-b)" stroke="var(--blue)" stroke-width="1.8"/>
+      <path d="M74 108.0 H238.0" stroke="var(--margin)" stroke-width="1.6" stroke-dasharray="6 5"/>
+      <path d="M332.0 288.0 H496" stroke="var(--blue)" stroke-width="1.6" stroke-dasharray="6 5"/>
+      <polyline points="91.5,300.0 134.5,300.0 177.5,300.0 220.5,300.0 263.5,192.0 306.5,112.8 349.5,84.0 392.5,74.4 435.5,72.0 478.5,69.6" fill="none" stroke="var(--green)" stroke-width="2.2"/>
+      <circle cx="91.5" cy="300.0" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <circle cx="134.5" cy="300.0" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <circle cx="177.5" cy="300.0" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <circle cx="220.5" cy="300.0" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <circle cx="263.5" cy="192.0" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <circle cx="306.5" cy="112.8" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <circle cx="349.5" cy="84.0" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <circle cx="392.5" cy="74.4" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <circle cx="435.5" cy="72.0" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <circle cx="478.5" cy="69.6" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <path d="M242.0 306 V52" stroke="var(--ink)" stroke-width="1.4" stroke-dasharray="2 5"/>
+      <path d="M70 300 V46 M70 300 H514 M500 300 V46" stroke="var(--ink)" stroke-width="2"/>
+      <path d="M64 300.0 H70 M64 252.0 H70 M64 204.0 H70 M64 156.0 H70 M64 108.0 H70 M64 60.0 H70 M500 300.0 H506 M500 252.0 H506 M500 204.0 H506 M500 156.0 H506 M500 108.0 H506 M500 60.0 H506 M91.5 300 V306 M134.5 300 V306 M177.5 300 V306 M220.5 300 V306 M263.5 300 V306 M306.5 300 V306 M349.5 300 V306 M392.5 300 V306 M435.5 300 V306 M478.5 300 V306" stroke="var(--ink)" stroke-width="1.6"/>
+      <path d="M476 108.0 H482 V288.0 H476" stroke="var(--ink)" stroke-width="1.6"/>
+      <!-- legend swatches -->
+      <path d="M72 26 V38 H86 V26 Z" fill="url(#hatch-m)" stroke="var(--margin)" stroke-width="1.6"/>
+      <path d="M182 26 V38 H196 V26 Z" fill="url(#hatch-b)" stroke="var(--blue)" stroke-width="1.6"/>
+      <path d="M330 32 H358" stroke="var(--green)" stroke-width="2.2"/>
+      <circle cx="344" cy="32" r="3.6" fill="var(--paper)" stroke="var(--green)" stroke-width="1.8"/>
+      <!-- summary rule -->
+      <path d="M70 352 H514" stroke="var(--ink)" stroke-width="1.4"/>
+    </g>
+
+    <g font-family="Caveat, cursive" fill="var(--ink)" font-size="18">
+      <text x="60" y="305.0" text-anchor="end">0</text>
+      <text x="60" y="257.0" text-anchor="end">2</text>
+      <text x="60" y="209.0" text-anchor="end">4</text>
+      <text x="60" y="161.0" text-anchor="end">6</text>
+      <text x="60" y="113.0" text-anchor="end">8</text>
+      <text x="60" y="65.0" text-anchor="end">10</text>
+      <text x="510" y="305.0">0%</text>
+      <text x="510" y="257.0">20%</text>
+      <text x="510" y="209.0">40%</text>
+      <text x="510" y="161.0">60%</text>
+      <text x="510" y="113.0">80%</text>
+      <text x="510" y="65.0">100%</text>
+      <text x="91.5" y="324" text-anchor="middle">D1</text>
+      <text x="134.5" y="324" text-anchor="middle">D2</text>
+      <text x="177.5" y="324" text-anchor="middle">D3</text>
+      <text x="220.5" y="324" text-anchor="middle">D4</text>
+      <text x="263.5" y="324" text-anchor="middle">D5</text>
+      <text x="306.5" y="324" text-anchor="middle">D6</text>
+      <text x="349.5" y="324" text-anchor="middle">D7</text>
+      <text x="392.5" y="324" text-anchor="middle">D8</text>
+      <text x="435.5" y="324" text-anchor="middle">D9</text>
+      <text x="478.5" y="324" text-anchor="middle">D10</text>
+      <text x="92" y="38" font-size="19">manual</text>
+      <text x="202" y="38" font-size="19">with automation</text>
+      <text x="364" y="38" font-size="19">% steps automated</text>
+      <text transform="translate(24 180) rotate(-90)" text-anchor="middle" font-size="19" fill="var(--muted)">hours / day on the task</text>
+      <text transform="translate(548 180) rotate(90)" text-anchor="middle" font-size="19" fill="var(--muted)">% automated</text>
+      <text x="246" y="66" font-size="19" fill="var(--ink)">script live →</text>
+      <g stroke="var(--paper)" stroke-width="5" stroke-linejoin="round" paint-order="stroke" font-weight="700">
+        <text x="76" y="100" font-size="18" fill="var(--margin)">avg 8 h</text>
+        <text x="322" y="278" font-size="18" fill="var(--blue)">avg 30 min</text>
+      </g>
+      <g stroke="var(--paper)" stroke-width="6" stroke-linejoin="round" paint-order="stroke">
+        <text x="474" y="208" text-anchor="end" font-size="30" font-weight="700" fill="var(--green)">−94%</text>
+      </g>
+      <text x="72" y="380" font-size="20"><tspan fill="var(--muted)">before</tspan> <tspan font-weight="700">8 h/day</tspan><tspan fill="var(--muted)"> · after</tspan> <tspan font-weight="700">30 min/day</tspan><tspan fill="var(--muted)"> · saved</tspan> <tspan font-weight="700" fill="var(--green)">7.5 h/day</tspan><tspan fill="var(--muted)"> · 10 days</tspan></text>
+      <text x="72" y="402" font-size="17" fill="var(--muted)">Fig. 1  Sample data for illustration</text>
+    </g>
+  </svg>
   </section>
 
   <section id="about" class="about">
     <div>
       <h2>About me</h2>
-      <p>I'm building my skills in three connected areas: websites, data and automation. What I enjoy most is finding a task that people repeat every week and turning it into something that runs by itself.</p>
-      <p>I work with Google Sheets and Apps Script, Python, JavaScript and SQL, and I'm exploring how AI tools like Claude and AI agents can take over routine work.</p>
+      <p>I work with Google Sheets, Apps Script, Python and SQL. Lately I'm exploring how AI tools like Claude, including AI agents, can take over routine work.</p>
       <p>Right now I'm putting together my first portfolio projects. You can follow along here:&nbsp;&nbsp;<a class="pill inline" href="https://github.com/and1run" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span></a></p>
     </div>
-    <div>
-      <h2>What I do</h2>
-      <ul class="todo">
-        <li><div><b>Web development</b><br><span>HTML, CSS, JavaScript</span></div></li>
-        <li><div><b>Data analytics</b><br><span>SQL, Google Sheets, Looker Studio, Python</span></div></li>
-        <li><div><b>Workflow automation</b><br><span>Apps Script, Python, AI agents with Claude</span></div></li>
-      </ul>
-    </div>
+    <svg class="about-sheet" viewBox="0 0 640 388" role="img" aria-labelledby="crm-t crm-d" xmlns="http://www.w3.org/2000/svg">
+    <title id="crm-t">CRM sheet</title>
+    <desc id="crm-d">A hand-drawn spreadsheet with columns Client, Company, Stage, Deal value, Last contact and Auto follow-up. Seven sample clients. Cell D9 sums won deals with SUMIF: $5,600.</desc>
+    <defs>
+      <filter id="ink-crm" x="-2%" y="-2%" width="104%" height="104%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="5" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="1.2"/>
+      </filter>
+    </defs>
+    <g filter="url(#ink-crm)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 14 H624 V42 H20 Z M70 14 V42 M96 14 V42" stroke="var(--ink)" stroke-width="1.6"/>
+      <path d="M20 60 H624 V80 H20 Z" fill="var(--note-b)" stroke="none"/>
+      <path d="M20 80 H46 V332 H20 Z" fill="var(--note-b)" stroke="none"/>
+      <path d="M46 80 H624 V108 H46 Z" fill="var(--hl)" stroke="none"/>
+      <path d="M20 60 H624 V332 H20 Z M46 60 V332 M150 60 V332 M270 60 V332 M358 60 V332 M446 60 V332 M530 60 V332 M20 80 H624 M20 108 H624 M20 136 H624 M20 164 H624 M20 192 H624 M20 220 H624 M20 248 H624 M20 276 H624 M20 304 H624" stroke="var(--ink)" stroke-width="1.2" opacity=".55"/>
+      <path d="M20 108 H624" stroke="var(--ink)" stroke-width="2.4"/>
+      <path d="M20 60 H624 V332 H20 Z" stroke="var(--ink)" stroke-width="1.8"/>
+      <rect x="277" y="113" width="38" height="18" rx="9" fill="var(--hl)" stroke="var(--green)" stroke-width="1.5"/>
+      <rect x="540" y="115" width="14" height="14" rx="2" fill="var(--green)" stroke="var(--green)" stroke-width="1.5"/>
+      <path d="M543 122 L546 125.5 L551.5 118.5" stroke="var(--paper)" stroke-width="2"/>
+      <rect x="277" y="141" width="74" height="18" rx="9" fill="var(--note-b)" stroke="var(--blue)" stroke-width="1.5"/>
+      <rect x="540" y="143" width="14" height="14" rx="2" fill="var(--green)" stroke="var(--green)" stroke-width="1.5"/>
+      <path d="M543 150 L546 153.5 L551.5 146.5" stroke="var(--paper)" stroke-width="2"/>
+      <rect x="277" y="169" width="81" height="18" rx="9" fill="none" stroke="var(--blue)" stroke-width="1.5"/>
+      <rect x="540" y="171" width="14" height="14" rx="2" fill="var(--green)" stroke="var(--green)" stroke-width="1.5"/>
+      <path d="M543 178 L546 181.5 L551.5 174.5" stroke="var(--paper)" stroke-width="2"/>
+      <rect x="277" y="197" width="45" height="18" rx="9" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+      <rect x="540" y="199" width="14" height="14" rx="2" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+      <rect x="277" y="225" width="38" height="18" rx="9" fill="var(--hl)" stroke="var(--green)" stroke-width="1.5"/>
+      <rect x="540" y="227" width="14" height="14" rx="2" fill="var(--green)" stroke="var(--green)" stroke-width="1.5"/>
+      <path d="M543 234 L546 237.5 L551.5 230.5" stroke="var(--paper)" stroke-width="2"/>
+      <rect x="277" y="253" width="45" height="18" rx="9" fill="none" stroke="var(--margin)" stroke-width="1.5"/>
+      <rect x="277" y="281" width="74" height="18" rx="9" fill="var(--note-b)" stroke="var(--blue)" stroke-width="1.5"/>
+      <rect x="540" y="283" width="14" height="14" rx="2" fill="var(--green)" stroke="var(--green)" stroke-width="1.5"/>
+      <path d="M543 290 L546 293.5 L551.5 286.5" stroke="var(--paper)" stroke-width="2"/>
+      <rect x="359" y="305" width="86" height="26" fill="var(--hl)" stroke="none"/>
+      <rect x="358" y="304" width="88" height="28" fill="none" stroke="var(--green)" stroke-width="2.6"/>
+      <rect x="442" y="328" width="7" height="7" fill="var(--green)" stroke="var(--paper)" stroke-width="1.2"/>
+      <path d="M20 332 V368 H624" stroke="var(--ink)" stroke-width="1.2" opacity=".55"/>
+      <path d="M50 332 V364 H120 V332" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"/>
+    </g>
+    <g font-family="Caveat, cursive" fill="var(--ink)">
+      <text x="45" y="34" text-anchor="middle" font-size="17" font-weight="700">D9</text>
+      <text x="83" y="34" text-anchor="middle" font-size="17" font-style="italic" fill="var(--muted)">fx</text>
+      <text x="106" y="34" font-size="18" fill="var(--blue)">=SUMIF(C2:C8, "Won", D2:D8)</text>
+      <text x="98.0" y="75" text-anchor="middle" font-size="14" fill="var(--muted)">A</text>
+      <text x="53" y="99" font-size="18" font-weight="700">Client</text>
+      <text x="210.0" y="75" text-anchor="middle" font-size="14" fill="var(--muted)">B</text>
+      <text x="157" y="99" font-size="18" font-weight="700">Company</text>
+      <text x="314.0" y="75" text-anchor="middle" font-size="14" fill="var(--muted)">C</text>
+      <text x="277" y="99" font-size="18" font-weight="700">Stage</text>
+      <text x="402.0" y="75" text-anchor="middle" font-size="14" fill="var(--muted)">D</text>
+      <text x="365" y="99" font-size="18" font-weight="700">Deal value</text>
+      <text x="488.0" y="75" text-anchor="middle" font-size="14" fill="var(--muted)">E</text>
+      <text x="453" y="99" font-size="18" font-weight="700">Last contact</text>
+      <text x="577.0" y="75" text-anchor="middle" font-size="14" fill="var(--muted)">F</text>
+      <text x="537" y="99" font-size="18" font-weight="700">Follow-up</text>
+      <text x="33" y="99" text-anchor="middle" font-size="14" fill="var(--muted)">1</text>
+      <text x="33" y="127" text-anchor="middle" font-size="14" fill="var(--muted)">2</text>
+      <text x="33" y="155" text-anchor="middle" font-size="14" fill="var(--muted)">3</text>
+      <text x="33" y="183" text-anchor="middle" font-size="14" fill="var(--muted)">4</text>
+      <text x="33" y="211" text-anchor="middle" font-size="14" fill="var(--muted)">5</text>
+      <text x="33" y="239" text-anchor="middle" font-size="14" fill="var(--muted)">6</text>
+      <text x="33" y="267" text-anchor="middle" font-size="14" fill="var(--muted)">7</text>
+      <text x="33" y="295" text-anchor="middle" font-size="14" fill="var(--muted)">8</text>
+      <text x="33" y="323" text-anchor="middle" font-size="14" fill="var(--muted)">9</text>
+      <text x="53" y="127" font-size="18">Maria Lopez</text>
+      <text x="157" y="127" font-size="18" fill="var(--muted)">Brightway Café</text>
+      <text x="296" y="127" text-anchor="middle" font-size="16" font-weight="700" fill="var(--green)">Won</text>
+      <text x="438" y="127" text-anchor="end" font-size="18">$2,400</text>
+      <text x="453" y="127" font-size="18" fill="var(--muted)">Oct 2</text>
+      <text x="562" y="127" font-size="16" fill="var(--muted)">sent</text>
+      <text x="53" y="155" font-size="18">James Chen</text>
+      <text x="157" y="155" font-size="18" fill="var(--muted)">Northfield Gym</text>
+      <text x="314" y="155" text-anchor="middle" font-size="16" font-weight="700" fill="var(--blue)">Proposal</text>
+      <text x="438" y="155" text-anchor="end" font-size="18">$1,800</text>
+      <text x="453" y="155" font-size="18" fill="var(--muted)">Oct 6</text>
+      <text x="562" y="155" font-size="16" fill="var(--muted)">sent</text>
+      <text x="53" y="183" font-size="18">Sofia Rossi</text>
+      <text x="157" y="183" font-size="18" fill="var(--muted)">Rossi Studio</text>
+      <text x="317" y="183" text-anchor="middle" font-size="16" font-weight="700" fill="var(--blue)">Qualified</text>
+      <text x="438" y="183" text-anchor="end" font-size="18">$950</text>
+      <text x="453" y="183" font-size="18" fill="var(--muted)">Oct 7</text>
+      <text x="562" y="183" font-size="16" fill="var(--muted)">sent</text>
+      <text x="53" y="211" font-size="18">Liam Novak</text>
+      <text x="157" y="211" font-size="18" fill="var(--muted)">Novak Plumbing</text>
+      <text x="299" y="211" text-anchor="middle" font-size="16" font-weight="700" fill="var(--muted)">Lead</text>
+      <text x="438" y="211" text-anchor="end" font-size="18">$600</text>
+      <text x="453" y="211" font-size="18" fill="var(--muted)">Oct 8</text>
+      <text x="562" y="211" font-size="16" fill="var(--muted)">queued</text>
+      <text x="53" y="239" font-size="18">Emma Clark</text>
+      <text x="157" y="239" font-size="18" fill="var(--muted)">Clark Dental</text>
+      <text x="296" y="239" text-anchor="middle" font-size="16" font-weight="700" fill="var(--green)">Won</text>
+      <text x="438" y="239" text-anchor="end" font-size="18">$3,200</text>
+      <text x="453" y="239" font-size="18" fill="var(--muted)">Sep 28</text>
+      <text x="562" y="239" font-size="16" fill="var(--muted)">sent</text>
+      <text x="53" y="267" font-size="18">Noah Patel</text>
+      <text x="157" y="267" font-size="18" fill="var(--muted)">Patel Logistics</text>
+      <text x="299" y="267" text-anchor="middle" font-size="16" font-weight="700" fill="var(--margin)">Lost</text>
+      <text x="438" y="267" text-anchor="end" font-size="18" fill="var(--muted)" text-decoration="line-through">$1,500</text>
+      <text x="453" y="267" font-size="18" fill="var(--muted)">Sep 21</text>
+      <text x="547" y="267" text-anchor="middle" font-size="18" fill="var(--muted)">–</text>
+      <text x="53" y="295" font-size="18">Ava Müller</text>
+      <text x="157" y="295" font-size="18" fill="var(--muted)">Green Leaf Shop</text>
+      <text x="314" y="295" text-anchor="middle" font-size="16" font-weight="700" fill="var(--blue)">Proposal</text>
+      <text x="438" y="295" text-anchor="end" font-size="18">$1,200</text>
+      <text x="453" y="295" font-size="18" fill="var(--muted)">Oct 5</text>
+      <text x="562" y="295" font-size="16" fill="var(--muted)">sent</text>
+      <text x="350" y="323" text-anchor="end" font-size="18" font-weight="700" fill="var(--muted)">Won total</text>
+      <text x="438" y="323" text-anchor="end" font-size="19" font-weight="700" fill="var(--green)">$5,600</text>
+      <text x="85" y="354" text-anchor="middle" font-size="18" font-weight="700" fill="var(--green)">CRM</text>
+      <text x="168" y="354" text-anchor="middle" font-size="18" fill="var(--muted)">Dashboard</text>
+      <text x="256" y="354" text-anchor="middle" font-size="18" fill="var(--muted)">Email log</text>
+      <text x="50" y="354" text-anchor="end" font-size="20" fill="var(--muted)">+</text>
+      <text x="624" y="354" text-anchor="end" font-size="18" fill="var(--green)">Apps Script runs daily at 8:00</text>
+    </g>
+  </svg>
   </section>
 
   <section id="projects">
@@ -254,13 +438,6 @@ footer{padding:var(--u) 1.25rem calc(var(--u)*2); text-align:center; color:var(-
   });
   if(mq.addEventListener) mq.addEventListener("change",sync);
   sync();
-
-  var burger=document.getElementById("burger"), menu=document.getElementById("menu");
-  function setMenu(open){menu.classList.toggle("open",open); burger.setAttribute("aria-expanded",open?"true":"false");}
-  burger.addEventListener("click",function(){setMenu(!menu.classList.contains("open"));});
-  menu.addEventListener("click",function(e){if(e.target.closest("a")) setMenu(false);});
-  document.addEventListener("click",function(e){if(!menu.contains(e.target)&&!burger.contains(e.target)) setMenu(false);});
-  document.addEventListener("keydown",function(e){if(e.key==="Escape") setMenu(false);});
 
   var EMAIL=["andrewrep24","gmail.com"].join("@");
   var copyBtn=document.getElementById("copy"), copyLabel=document.getElementById("copy-label"), copyNote=document.getElementById("copy-note"), copyTimer;
