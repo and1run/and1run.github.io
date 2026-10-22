@@ -9,7 +9,7 @@ Live at https://andreirepida.com
 | File | Purpose |
 | --- | --- |
 | `index.html` | The website |
-| `404.html` | Shown for pages that don't exist |
+| `404.html` | Shown for pages that don't exist. Also sends addresses typed with capital letters to the lowercase version |
 | `favicon.svg`, `apple-touch-icon.png` | Browser tab and phone home-screen icons |
 | `robots.txt`, `sitemap.xml` | Let search engines find and index the site |
 | `social-preview.png` | Image shown when the link is shared in chats and on social media |
@@ -36,6 +36,7 @@ Everything is in `index.html`: the text, the projects, the links and the email a
 
 ## Notes
 
+- Web addresses are case-sensitive on GitHub Pages: everything after `andreirepida.com/` must match the name exactly. Keep project repository names in lowercase (for example `hos-planner` and `load-calculator`). Then `404.html` redirects any wrong-case address, such as `/HOS-Planner/`, to the lowercase one.
 - The "Copy email" button copies the address to the clipboard. The address is not written in the page text, so spam programs that scan pages don't see it.
 - The light and dark theme follows the visitor's device setting, and the toggle in the top bar overrides it. The choice is saved in the browser.
 - Fonts (Caveat and Nunito) are loaded from Google Fonts. The chart in the intro and the spreadsheet figure in About me use sample data, as their captions say.

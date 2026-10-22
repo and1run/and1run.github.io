@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-tCAGZhpxZxZBtiIoo3VRxVwRs/1E7b+hdI+GbpC8m8M=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'sha256-Y7rOdI43AZDqhCe6IKOQhWKSzEJQ7p8pS65HlNAheDA='; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-cnWE+PxFKOPr0p2HmZcPG6A2hO8dARUuUraCeUcvvrg=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'sha256-Y7rOdI43AZDqhCe6IKOQhWKSzEJQ7p8pS65HlNAheDA='; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Andrei Repida | Web development, data analytics, automation</title>
 <meta name="description" content="Personal website of Andrei Repida: web development, data analytics and workflow automation.">
@@ -29,7 +29,7 @@
 :root{
   --u:32px;
   --paper:#f7f5ef; --line:#c6dbec; --ink:#1f2937; --muted:#5b6678; --blue:#1c2bb8; --margin:#b8474d;
-  --green:#226f5a; --hl:#cdebd9; --note-b:#dcebf7; --note-g:#dbf0e4; --note-s:#e8eaee; --tape:rgba(150,170,190,.45); --on:#fff;
+  --green:#226f5a; --hl:#cdebd9; --note-b:#dcebf7; --note-g:#dbf0e4; --tape:rgba(150,170,190,.45); --on:#fff;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
@@ -37,12 +37,12 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --paper:#161f31; --line:#2a3957; --ink:#e6ebf7; --muted:#a3afcb; --blue:#93a8ff; --margin:#d98a9a;
-    --green:#82d3a8; --hl:#24473a; --note-b:#22324d; --note-g:#1f3a33; --note-s:#2a3144; --tape:rgba(160,180,210,.25); --on:#0f1626;
+    --green:#82d3a8; --hl:#24473a; --note-b:#22324d; --note-g:#1f3a33; --tape:rgba(160,180,210,.25); --on:#0f1626;
   }
 }
 :root[data-theme="dark"]{
   --paper:#161f31; --line:#2a3957; --ink:#e6ebf7; --muted:#a3afcb; --blue:#93a8ff; --margin:#d98a9a;
-  --green:#82d3a8; --hl:#24473a; --note-b:#22324d; --note-g:#1f3a33; --note-s:#2a3144; --tape:rgba(160,180,210,.25); --on:#0f1626;
+  --green:#82d3a8; --hl:#24473a; --note-b:#22324d; --note-g:#1f3a33; --tape:rgba(160,180,210,.25); --on:#0f1626;
 }
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-behavior:smooth; scroll-padding-top:calc(var(--u)*3 + env(safe-area-inset-top,0px))}
@@ -103,8 +103,7 @@ p{margin:0 0 var(--u); max-width:36rem}
 .note{position:relative; padding:calc(var(--u)*.9) 1.3rem calc(var(--u)*.7); box-shadow:0 2px 0 rgba(0,0,0,.06),0 8px 18px rgba(30,40,70,.14); transition:transform .25s}
 .note:nth-child(1){background:var(--note-b); transform:rotate(-1.4deg)}
 .note:nth-child(2){background:var(--note-g); transform:rotate(1deg)}
-.note:nth-child(3){background:var(--note-s); transform:rotate(-.6deg)}
-.note:nth-child(4){background:var(--note-b); transform:rotate(1.2deg)}
+.note .pill.inline{margin:.7rem 0 .2rem}
 .note:hover{transform:rotate(0deg) translateY(-4px)}
 .note::before{content:""; position:absolute; top:-.9rem; left:50%; width:5.5rem; height:1.7rem; margin-left:-2.75rem; background:var(--tape); transform:rotate(2deg)}
 .note h3{font-size:2rem; line-height:var(--u); margin-bottom:.4rem}
@@ -122,13 +121,11 @@ footer{margin-top:auto; padding:1.25rem 1.25rem 1.5rem; text-align:center; color
 .pill.solid{background:var(--blue); color:var(--on)}
 .pill.solid:hover{background:var(--blue); opacity:.9}
 .pill.inline{height:2.2rem; margin:-.4rem 0; padding:0 1rem 0 .7rem; gap:.45rem; font-size:.95rem; vertical-align:middle}
-.pill.inline svg{width:1.1rem; height:1.1rem}
 .pill svg{width:1.3rem; height:1.3rem; fill:currentColor}
 .pill svg.line{fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
 .copy-note{min-height:var(--u); margin:0; color:var(--green); font-weight:700}
 .copy-note.err{color:#c0504d}
 .offscreen{position:fixed; top:0; left:0; width:1px; height:1px; opacity:0}
-.intro{margin-bottom:0}
 @media (max-width:760px){
   .hero,.about{grid-template-columns:1fr}
   .hero{row-gap:var(--u)}
@@ -260,7 +257,6 @@ footer{margin-top:auto; padding:1.25rem 1.25rem 1.5rem; text-align:center; color
     <div>
       <h2>About me</h2>
       <p>I work with Google Sheets, Apps Script, Python and SQL. Lately I'm exploring how AI tools like Claude, including AI agents, can take over routine work.</p>
-      <p>Right now I'm putting together my first portfolio projects. You can follow along here:&nbsp;&nbsp;<a class="pill inline" href="https://github.com/and1run" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span></a></p>
     </div>
     <svg class="about-sheet" viewBox="0 0 640 388" role="img" aria-labelledby="crm-t crm-d" xmlns="http://www.w3.org/2000/svg">
     <title id="crm-t">CRM sheet</title>
@@ -383,31 +379,20 @@ footer{margin-top:auto; padding:1.25rem 1.25rem 1.5rem; text-align:center; color
 
   <section id="projects">
     <h2>Projects</h2>
-    <p class="intro">My first projects. I'll add the code to GitHub as each one is ready.</p>
     <div class="notes">
       <article class="note">
-        <h3>Sheet Automator</h3>
-        <span class="result">in progress</span>
-        <p>Cleans new form responses in Google Sheets, flags problems and sends a daily summary by email.</p>
-        <ul class="tags"><li>Google Sheets</li><li>Apps Script</li><li>JavaScript</li></ul>
+        <h3>Load Rate Calculator</h3>
+        <span class="result">live demo</span>
+        <p>A free tool for truck drivers and dispatchers. Enter the truck location, pickup, delivery and rate to see the all-in rate per mile, deadhead, profit with a Book, Negotiate or Reject verdict, and HOS transit time on a route map.</p>
+        <ul class="tags"><li>Web app</li><li>Route map</li><li>HOS transit</li></ul>
+        <p><a class="pill inline" href="https://andreirepida.com/load-calculator/" target="_blank" rel="noopener noreferrer">Open the tool</a></p>
       </article>
       <article class="note">
-        <h3>KPI Dashboard</h3>
-        <span class="result">planned</span>
-        <p>Turns a sample sales database into a clear dashboard that shows revenue and trends.</p>
-        <ul class="tags"><li>SQL</li><li>Looker Studio</li></ul>
-      </article>
-      <article class="note">
-        <h3>Weekly Report Bot</h3>
-        <span class="result">in progress</span>
-        <p>A Python script that gathers data from several sources and builds a weekly report automatically.</p>
-        <ul class="tags"><li>Python</li><li>Google Sheets</li></ul>
-      </article>
-      <article class="note">
-        <h3>Research Agent</h3>
-        <span class="result">planned</span>
-        <p>An AI agent built with Claude that collects information on a topic and drafts a short summary with sources.</p>
-        <ul class="tags"><li>Claude</li><li>AI agents</li><li>JavaScript</li></ul>
+        <h3>HOS Planner</h3>
+        <span class="result">live demo</span>
+        <p>A simulator of US trucking hours of service with a split sleeper toggle and a trip planner. It shows the break, 11-hour drive, 14-hour window and 70-hour cycle clocks and lists violations day by day.</p>
+        <ul class="tags"><li>Web app</li><li>Works offline</li><li>49 CFR 395</li></ul>
+        <p><a class="pill inline" href="https://andreirepida.com/HOS-planner/" target="_blank" rel="noopener noreferrer">Open the tool</a></p>
       </article>
     </div>
   </section>
